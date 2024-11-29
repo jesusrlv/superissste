@@ -85,3 +85,9 @@
     object-fit: cover;
   
   }
+
+  .imagenOfertas{
+    width: 100%; /* Asegura que ocupe el ancho completo del card */
+    height: 100vh; /* Ajusta esta altura según tu diseño */
+    object-fit: cover;
+  }
