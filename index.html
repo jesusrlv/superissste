@@ -103,7 +103,7 @@
     <link href="carousel.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
   </head>
-  <body onload="cargaCategoria()">
+  <body onload="cargaCategoria();cargaProductosRandom()">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -335,121 +335,11 @@
       </div>
       <div class="container container-card4">
         <p>
-          <select class="form-select" aria-label="Default select example" id="categoria">
+          <select class="form-select" aria-label="Default select example" id="categoria" onchange="cargaProductos(this.value)">
           </select>
         </p>
         <hr>
-      <div class="row g-3">
-        <div class="col-md-3 col-sm-12">
-          <div class="card" style="width: 18rem;height:50vh;">
-            <img src="img/tienda_01.jpg" class="card-img-top" alt="..."  id="imagenCatalogo">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-            <div class="card-footer">
-              <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button"><i class="bi bi-journals"></i> Ver</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-sm-12">
-          <div class="card" style="width: 18rem;height:50vh;">
-            <img src="img/superissste_tienda_02.jpg" class="card-img-top" alt="..."  id="imagenCatalogo">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-            <div class="card-footer">
-              <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button"><i class="bi bi-journals"></i> Ver</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-sm-12">
-          <div class="card" style="width: 18rem;height:50vh;">
-            <img src="img/tienda_03.jpg" class="card-img-top" alt="..."  id="imagenCatalogo">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-            <div class="card-footer">
-              <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button"><i class="bi bi-journals"></i> Ver</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-sm-12">
-          <div class="card" style="width: 18rem;height:50vh;">
-            <img src="img/tienda_04.jpg" class="card-img-top" alt="..."  id="imagenCatalogo">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-            <div class="card-footer">
-              <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button"><i class="bi bi-journals"></i> Ver</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-12">
-          <div class="card" style="width: 18rem;height:50vh;">
-            <img src="img/tienda_01.jpg" class="card-img-top" alt="..."  id="imagenCatalogo">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-            <div class="card-footer">
-              <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button"><i class="bi bi-journals"></i> Ver</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-sm-12">
-          <div class="card" style="width: 18rem;height:50vh;">
-            <img src="img/superissste_tienda_02.jpg" class="card-img-top" alt="..."  id="imagenCatalogo">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-            <div class="card-footer">
-              <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button"><i class="bi bi-journals"></i> Ver</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-sm-12">
-          <div class="card" style="width: 18rem;height:50vh;">
-            <img src="img/tienda_03.jpg" class="card-img-top" alt="..."  id="imagenCatalogo">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-            <div class="card-footer">
-              <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button"><i class="bi bi-journals"></i> Ver</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-sm-12">
-          <div class="card" style="width: 18rem;height:50vh;">
-            <img src="img/tienda_04.jpg" class="card-img-top" alt="..."  id="imagenCatalogo">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-            <div class="card-footer">
-              <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button"><i class="bi bi-journals"></i> Ver</button>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="row g-3" id="inventario">
 
       </div>
     </div>
