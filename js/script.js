@@ -20,17 +20,34 @@ function cargaProductosRandom(){
     });
 }
 
-function cargaProductos(producto){
+function cargaProductos(producto,num){
     document.getElementById('inventario').innerHTML = "";
+    contador(producto,num);
     $.ajax({
         type: "POST",
         url: "prcd/cargarProductos.php",
         data:{
-            producto:producto
+            producto:producto,
+            num:num
         },
         dataType: "html",
         success: function(data){
             $('#inventario').fadeIn(1000).html(data);    
+        }
+    });
+}
+
+function contador(producto,num){
+    $.ajax({
+        type:"POST",
+        data:{
+            producto:producto,
+            num:num
+        },
+        url:"prcd/contador.php",
+        dataType:"html",
+        success:function(data){
+            $('#contadorProductos').fadeIn(1000).html(data);
         }
     });
 }

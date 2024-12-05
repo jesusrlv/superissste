@@ -2,7 +2,7 @@
 
 require('../prcd/conn.php');
 
-$sql = "SELECT * FROM inventario ORDER BY id ASC";
+$sql = "SELECT * FROM inventario ORDER BY RAND() LIMIT 12";
 $resultado = $conn->query($sql);
 
 while($row = $resultado->fetch_assoc()){

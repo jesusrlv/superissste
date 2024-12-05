@@ -3,8 +3,10 @@
 require('../prcd/conn.php');
 
 $producto = $_POST['producto'];
+$num = $_POST['num'];
+// $sql = "SELECT COUNT(*) FROM inventario WHERE categoria = '$producto' ORDER BY id ASC LIMIT 12,'$num'";
+$sql = "SELECT * FROM inventario WHERE categoria = '$producto' ORDER BY id ASC LIMIT 12 OFFSET $num";
 
-$sql = "SELECT * FROM inventario WHERE categoria = '$producto' ORDER BY id ASC";
 $resultado = $conn->query($sql);
 
 while($row = $resultado->fetch_assoc()){
