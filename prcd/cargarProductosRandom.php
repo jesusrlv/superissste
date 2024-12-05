@@ -19,7 +19,7 @@ while($row = $resultado->fetch_assoc()){
         </div>
         <div class="card-footer">
             <div class="d-grid gap-2">
-            <button class="btn btn-primary" type="button"><i class="bi bi-journals"></i> Ver</button>
+            <button class="btn btn-primary" type="button"><i class="bi bi-cart-plus-fill"></i> Agregar</a></button>
             </div>
         </div>
         </div>
