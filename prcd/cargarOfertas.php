@@ -13,7 +13,7 @@ if ($filas > 0){
             <img src="productos/'.$row['ruta'].'" class="d-block w-100 imagenOfertas" alt="...">
 
             <!-- Etiqueta "Ofertas" en la esquina superior izquierda -->
-            <div class="position-absolute top-0 start-0 bg-warning text-dark text-center p-2 w-50">
+            <div class="position-absolute top-0 start-0 bg-warning text-dark text-center p-2 w-50 display-6" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                 <i class="bi bi-piggy-bank"></i> Ofertas
             </div>
 
