@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-12-2024 a las 08:07:40
+-- Tiempo de generación: 05-12-2024 a las 23:44:08
 -- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 7.4.29
+-- Versión de PHP: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,51 +53,52 @@ CREATE TABLE `inventario` (
   `existencia` int(11) NOT NULL,
   `precio` decimal(10,0) NOT NULL,
   `categoria` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `ruta` varchar(300) COLLATE utf8_unicode_ci NOT NULL
+  `ruta` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `oferta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `inventario`
 --
 
-INSERT INTO `inventario` (`id`, `codigo`, `descripcion`, `existencia`, `precio`, `categoria`, `ruta`) VALUES
-(1, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg'),
-(2, '0002', 'Producto 2', 1, '1', 'Categoría 2', 'producto_02.jpg'),
-(3, '0003', 'Producto 3', 1, '1', 'Categoría 3', 'producto_03.jpg'),
-(4, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(5, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg'),
-(6, '0002', 'Producto 2', 1, '1', 'Categoría 2', 'producto_02.jpg'),
-(7, '0003', 'Producto 3', 1, '1', 'Categoría 3', 'producto_03.jpg'),
-(8, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(9, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg'),
-(10, '0002', 'Producto 2', 1, '1', 'Categoría 2', 'producto_02.jpg'),
-(11, '0003', 'Producto 3', 1, '1', 'Categoría 3', 'producto_03.jpg'),
-(12, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(13, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg'),
-(14, '0002', 'Producto 2', 1, '1', 'Categoría 2', 'producto_02.jpg'),
-(15, '0003', 'Producto 3', 1, '1', 'Categoría 3', 'producto_03.jpg'),
-(16, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(17, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg'),
-(18, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(19, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg'),
-(20, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(21, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(22, '0003', 'Producto 3', 1, '1', 'Categoría 3', 'producto_03.jpg'),
-(23, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(24, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg'),
-(25, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(26, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg'),
-(27, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(28, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg'),
-(29, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(30, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg'),
-(31, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(32, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg'),
-(33, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(34, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg'),
-(35, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(36, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg'),
-(37, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg');
+INSERT INTO `inventario` (`id`, `codigo`, `descripcion`, `existencia`, `precio`, `categoria`, `ruta`, `oferta`) VALUES
+(1, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg', 0),
+(2, '0002', 'Producto 2', 1, '1', 'Categoría 2', 'producto_02.jpg', 0),
+(3, '0003', 'Producto 3', 1, '1', 'Categoría 3', 'producto_03.jpg', 0),
+(4, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0),
+(5, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg', 0),
+(6, '0002', 'Producto 2', 1, '1', 'Categoría 2', 'producto_02.jpg', 1),
+(7, '0003', 'Producto 3', 1, '1', 'Categoría 3', 'producto_03.jpg', 0),
+(8, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0),
+(9, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg', 0),
+(10, '0002', 'Producto 2', 1, '1', 'Categoría 2', 'producto_02.jpg', 0),
+(11, '0003', 'Producto 3', 1, '1', 'Categoría 3', 'producto_03.jpg', 0),
+(12, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0),
+(13, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg', 0),
+(14, '0002', 'Producto 2', 1, '1', 'Categoría 2', 'producto_02.jpg', 0),
+(15, '0003', 'Producto 3', 1, '1', 'Categoría 3', 'producto_03.jpg', 0),
+(16, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0),
+(17, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg', 0),
+(18, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0),
+(19, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg', 0),
+(20, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0),
+(21, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0),
+(22, '0003', 'Producto 3', 1, '1', 'Categoría 3', 'producto_03.jpg', 1),
+(23, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0),
+(24, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg', 0),
+(25, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 1),
+(26, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg', 0),
+(27, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0),
+(28, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg', 0),
+(29, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0),
+(30, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg', 0),
+(31, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0),
+(32, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg', 0),
+(33, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0),
+(34, '0001', 'Producto 1', 1, '1', 'Categoría 1', 'producto_01.jpg', 0),
+(35, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0),
+(36, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0),
+(37, '0004', 'Producto 4', 1, '1', 'Categoría 1', 'producto_04.jpg', 0);
 
 -- --------------------------------------------------------
 
