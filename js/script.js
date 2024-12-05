@@ -51,3 +51,14 @@ function contador(producto,num){
         }
     });
 }
+
+function ofertas(){
+    $.ajax({
+        type: "POST",
+        url: "prcd/cargarOfertas.php",
+        dataType: "html",
+        success: function(data){
+            $('#ofertas').fadeIn(1000).html(data);    
+        }
+    });
+}
