@@ -21,6 +21,7 @@ function cargaProductosRandom(){
 }
 
 function cargaProductos(producto,num){
+    
     document.getElementById('inventario').innerHTML = "";
     contador(producto,num);
     $.ajax({
@@ -72,3 +73,14 @@ function ofertas(){
     });
 }
 
+// offcanvas
+function carrito(){
+    // Seleccionar el elemento del offcanvas
+    const offcanvasElement = document.getElementById('carrito');
+    
+    // Crear una instancia de Offcanvas de Bootstrap
+    const bsOffcanvas = new bootstrap.Offcanvas(offcanvasElement);
+  
+    // Mostrar el offcanvas
+    bsOffcanvas.show();
+}

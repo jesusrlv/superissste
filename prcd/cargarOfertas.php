@@ -6,10 +6,20 @@ $sql = "SELECT * FROM inventario WHERE oferta = 1 ORDER BY id DESC";
 $resultado = $conn->query($sql);
 $filas = $resultado->num_rows;
 if ($filas > 0){
-
+    $x = 0;
     while($row = $resultado->fetch_assoc()){
-        echo '
+        $x++;
+        if($x == 1){
+        echo'
         <div class="carousel-item active">
+        ';
+        }
+        else{
+        echo'
+        <div class="carousel-item">
+        ';    
+        }
+        echo '
             <img src="productos/'.$row['ruta'].'" class="d-block w-100 imagenOfertas" alt="...">
 
             <!-- Etiqueta "Ofertas" en la esquina superior izquierda -->
@@ -26,10 +36,10 @@ if ($filas > 0){
                             <h5 class="mb-0">'.$row['descripcion'].' | Precio: $'.$row['precio'].'</h5>
                         </div>
                         <!-- Botón alineado verticalmente -->
-                        <div class="d-flex align-items-center">
-                            <a href="detalleProducto.php?id='.$row['id'].'" class="btn btn-light btn-sm text-primary">
+                        <div class="d-flex align-items-center" style="z-index:10000;">
+                            <button class="btn btn-outline-light btn-sm" onclick="carrito()">
                                 <i class="bi bi-cart-plus-fill"></i> Agregar
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
