@@ -84,3 +84,7 @@ function carrito(){
     // Mostrar el offcanvas
     bsOffcanvas.show();
 }
+
+function agregarCarrito(){
+    
+}
