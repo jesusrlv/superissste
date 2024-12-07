@@ -85,6 +85,17 @@ function carrito(){
     bsOffcanvas.show();
 }
 
-function agregarCarrito(){
+
+// function carritoStore(id,detalle,precio){
+//     // Seleccionar el elemento del offcanvas
+//     const offcanvasElement = document.getElementById('carrito');
     
-}
+//     // Crear una instancia de Offcanvas de Bootstrap
+//     const bsOffcanvas = new bootstrap.Offcanvas(offcanvasElement);
+  
+//     // Mostrar el offcanvas
+//     bsOffcanvas.show();
+
+//     //función de llenado de grid
+//     tablaGrid(id,detalle,precio);
+// }

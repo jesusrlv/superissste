@@ -1,77 +1,74 @@
 document.addEventListener("DOMContentLoaded", () => {
     const cartBody = document.getElementById("cartBody");
     const sendCart = document.getElementById("sendCart");
+    const totalDisplay = document.getElementById("total");
+    let products = [];
 
-    // Ejemplo de productos
-    const products = [
-        { id: 1, name: "Producto A", price: 100 },
-        { id: 2, name: "Producto B", price: 200 },
-        { id: 3, name: "Producto C", price: 150 },
-    ];
+    window.carritoStore = (id, detalle, precio) => {
+        const offcanvasElement = document.getElementById('carrito');
+        const bsOffcanvas = new bootstrap.Offcanvas(offcanvasElement);
+        bsOffcanvas.show();
+        tablaGrid(id, detalle, precio);
+    };
 
-    // Agregar productos al grid
-    products.forEach(product => {
+    const tablaGrid = (id1, detalle, precio) => {
+        products.push({ id: id1, name: detalle, price: precio });
         const row = document.createElement("tr");
-        row.dataset.productId = product.id;
+        row.dataset.productId = id1;
 
         row.innerHTML = `
-            <td>${product.name}</td>
-            <td><input type="number" value="1" min="1" class="w-50 quantity"></td>
-            <td>${product.price}</td>
-            <td class="total">${product.price}</td>
-            <td><button type="button" class="btn btn-danger btn-sm btn-lg remove"><i class="bi bi-trash3-fill small"></i></button></td>
+            <td class="fw-bold small">${detalle}</td>
+            <td><input type="number" value="1" min="1" class="form-control quantity text-center"></td>
+            <td class="text-center small">${precio.toFixed(2)}</td>
+            <td class="text-center small total">${precio.toFixed(2)}</td>
+            <td><button class="btn btn-danger btn-sm remove"><i class="bi bi-trash"></i></button></td>
         `;
 
         cartBody.appendChild(row);
-    });
+        calculateTotal();
+    };
 
-    // Actualizar el total cuando cambia la cantidad
+    const calculateTotal = () => {
+        const totals = [...cartBody.querySelectorAll(".total")].map(cell => parseFloat(cell.textContent) || 0);
+        const total = totals.reduce((sum, value) => sum + value, 0);
+        totalDisplay.textContent = `${total.toFixed(2)}`;
+        sendCart.disabled = total === 0;
+    };
+
     cartBody.addEventListener("input", (e) => {
         if (e.target.classList.contains("quantity")) {
             const row = e.target.closest("tr");
-            const price = parseFloat(row.children[2].textContent);
-            const quantity = parseInt(e.target.value);
+            const price = parseFloat(row.children[2].textContent) || 0;
+            const quantity = parseInt(e.target.value) || 0;
             const totalCell = row.querySelector(".total");
 
             totalCell.textContent = (price * quantity).toFixed(2);
+            calculateTotal();
         }
     });
 
-    // Eliminar un producto del carrito
     cartBody.addEventListener("click", (e) => {
-        if (e.target.classList.contains("remove")) {
-            e.target.closest("tr").remove();
+        const removeButton = e.target.closest(".remove");
+        if (removeButton) {
+            removeButton.closest("tr").remove();
+            calculateTotal();
         }
     });
 
-    // Enviar carrito por AJAX
     sendCart.addEventListener("click", () => {
-        const cartData = [];
+        const cartData = [...cartBody.querySelectorAll("tr")].map(row => ({
+            productId: row.dataset.productId,
+            quantity: row.querySelector(".quantity").value,
+            total: row.querySelector(".total").textContent
+        }));
 
-        document.querySelectorAll("#cartBody tr").forEach(row => {
-            const productId = row.dataset.productId;
-            const quantity = row.querySelector(".quantity").value;
-            const total = row.querySelector(".total").textContent;
-
-            cartData.push({
-                productId,
-                quantity,
-                total
-            });
-        });
-
-        // Enviar al servidor
         fetch("save_cart.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(cartData)
         })
         .then(response => response.json())
-        .then(data => {
-            alert(data.message || "Carrito enviado con éxito");
-        })
-        .catch(error => {
-            console.error("Error:", error);
-        });
+        .then(data => alert(data.message || "Carrito enviado con éxito"))
+        .catch(error => console.error("Error:", error));
     });
 });

@@ -22,7 +22,7 @@ while($row = $resultado->fetch_assoc()){
         </div>
         <div class="card-footer">
             <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button" onclick="carrito()"><i class="bi bi-cart-plus-fill"></i> Agregar</button>
+                <button class="btn btn-primary" type="button" onclick="carritoStore('.$row['id'].',\''.$row['descripcion'].'\','.$row['precio'].')"><i class="bi bi-cart-plus-fill"></i> Agregar</button>
             </div>
         </div>
     </div>
