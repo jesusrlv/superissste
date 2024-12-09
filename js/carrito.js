@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sendCart = document.getElementById("sendCart");
     const totalDisplay = document.getElementById("total");
     let products = [];
+    let sumar = 0;
 
     window.carritoStore = (id, detalle, precio) => {
         const offcanvasElement = document.getElementById('carrito');
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const tablaGrid = (id1, detalle, precio) => {
+        sumar = sumar + 1;
         products.push({ id: id1, name: detalle, price: precio });
         const row = document.createElement("tr");
         row.dataset.productId = id1;
@@ -26,6 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         cartBody.appendChild(row);
         calculateTotal();
+        filasTotales(sumar);
+    };
+
+    const filasTotales  = (sumaT) =>{
+        document.getElementById('sumaCarrito').innerText = sumaT;
     };
 
     const calculateTotal = () => {
@@ -51,7 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const removeButton = e.target.closest(".remove");
         if (removeButton) {
             removeButton.closest("tr").remove();
+            sumar = sumar - 1;
             calculateTotal();
+            filasTotales(sumar);
         }
     });
 

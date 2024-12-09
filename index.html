@@ -176,13 +176,16 @@
           <li class="nav-item">
             <a class="nav-link" href="#" aria-disabled=""><i class="bi bi-bag-check-fill"></i> Ofertas</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)" onclick="carrito()"><i class="bi bi-cart-check"></i> Carrito</a>
-          </li>
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Búsqueda" aria-label="Búsqueda">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
+          
+          <button type="button" class="btn btn-outline-primary position-relative" onclick="carrito()">
+            <i class="bi bi-cart-check"></i> Carrito
+            <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger" id="sumaCarrito">
+              0
+              <span class="visually-hidden">Carrito pendiente</span>
+            </span>
+          </button>
         </form>
       </div>
     </div>
