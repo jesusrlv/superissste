@@ -8,13 +8,31 @@ document.addEventListener("DOMContentLoaded", () => {
     window.carritoStore = (id, detalle, precio) => {
         const offcanvasElement = document.getElementById('carrito');
         const bsOffcanvas = new bootstrap.Offcanvas(offcanvasElement);
-        bsOffcanvas.show();
-        tablaGrid(id, detalle, precio);
+        Swal.fire({
+            title: "¿Deseas agregar este producto al carrito?",
+            text: "Confirma tu acción",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "Sí, agregar",
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: "#3085d6", // Azul
+            cancelButtonColor: "#d33" // Rojo
+        }).then((result) => {
+            if (result.isConfirmed) {
+                
+                bsOffcanvas.show();
+                tablaGrid(id, detalle, precio);
+                
+            } else {
+                console.log("El usuario canceló la acción");
+            }
+        });
     };
 
     const tablaGrid = (id1, detalle, precio) => {
         sumar = sumar + 1;
         products.push({ id: id1, name: detalle, price: precio });
+        
         const row = document.createElement("tr");
         row.dataset.productId = id1;
 
@@ -29,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cartBody.appendChild(row);
         calculateTotal();
         filasTotales(sumar);
+        
     };
 
     const filasTotales  = (sumaT) =>{
