@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-12-2024 a las 23:44:08
+-- Tiempo de generación: 10-12-2024 a las 07:19:28
 -- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 7.4.28
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,34 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `superissste`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carrito`
+--
+
+CREATE TABLE `carrito` (
+  `id` int(11) NOT NULL,
+  `producto_id` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `carrito`
+--
+
+INSERT INTO `carrito` (`id`, `producto_id`, `cantidad`, `total`, `fecha`) VALUES
+(1, 1, 9, '900.00', '2024-12-06 18:11:08'),
+(2, 2, 1, '200.00', '2024-12-06 18:11:09'),
+(3, 3, 1, '150.00', '2024-12-06 18:11:09'),
+(4, 1, 9, '900.00', '2024-12-06 18:12:26'),
+(5, 2, 2, '400.00', '2024-12-06 18:12:26'),
+(6, 3, 1, '150.00', '2024-12-06 18:12:26'),
+(7, 1, 9, '900.00', '2024-12-06 18:19:35'),
+(8, 3, 1, '150.00', '2024-12-06 18:19:35');
 
 -- --------------------------------------------------------
 
@@ -118,6 +146,12 @@ CREATE TABLE `usr` (
 --
 
 --
+-- Indices de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `categoria`
 --
 ALTER TABLE `categoria`
@@ -138,6 +172,12 @@ ALTER TABLE `usr`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
