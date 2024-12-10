@@ -37,7 +37,7 @@ if ($filas > 0){
                         </div>
                         <!-- Botón alineado verticalmente -->
                         <div class="d-flex align-items-center" style="z-index:10000;">
-                            <button class="btn btn-outline-light btn-sm" onclick="carrito()">
+                            <button class="btn btn-outline-light btn-sm"onclick="carritoStore('.$row['id'].',\''.$row['descripcion'].'\','.$row['precio'].')">
                                 <i class="bi bi-cart-plus-fill"></i> Agregar
                             </button>
                         </div>
