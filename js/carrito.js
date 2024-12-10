@@ -90,13 +90,26 @@ document.addEventListener("DOMContentLoaded", () => {
             total: row.querySelector(".total").textContent
         }));
 
-        fetch("save_cart.php", {
+        fetch("prcd/save_cart.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(cartData)
         })
         .then(response => response.json())
-        .then(data => alert(data.message || "Carrito enviado con éxito"))
+        .then(data => {
+            Swal.fire({
+                title: "Carrito agregado, se confirma la compra",
+                text: "SUPERISSSTE",
+                icon: "success",
+                showCancelButton: false,
+                confirmButtonText: "Aceptar",
+                // cancelButtonText: "Cancelar",
+                confirmButtonColor: "#3085d6" // Azul
+                // cancelButtonColor: "#d33" // Rojo
+            });
+        }
+            // alert(data.message || "Carrito enviado con éxito")
+        )
         .catch(error => console.error("Error:", error));
     });
 });
