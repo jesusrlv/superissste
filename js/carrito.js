@@ -111,4 +111,12 @@ document.addEventListener("DOMContentLoaded", () => {
         )
         .catch(error => console.error("Error:", error));
     });
+
+    const datosGenerales = () => {
+        let nombre = document.getElementById("nombre");
+        let direccion = document.getElementById("direccion");
+        let telefono = document.getElementById("telefono");
+        let correo = document.getElementById("email");
+        let tarjeta = document.getElementById("tarjeta");
+    };
 });
