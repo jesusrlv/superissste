@@ -408,7 +408,12 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    <h4><i class="bi bi-list-check"></i> Datos generales</h4>
+    <!-- <h4><i class="bi bi-list-check"></i> Datos generales</h4> -->
+    <div class="alert alert-primary text-center" role="alert">
+      <i class="bi bi-list-check"></i> Datos generales
+    </div>
+    
+    <hr>
     <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
       <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1" id="nombre">
@@ -430,7 +435,11 @@
       <input type="text" class="form-control" placeholder="Tarjeta" aria-label="Tarjeta" aria-describedby="basic-addon1" id="tarjeta">
     </div>
     
-    <h4><i class="bi bi-list-check"></i> Mercancía por adquitir</h4>
+    <!-- <h4><i class="bi bi-list-check"></i> Mercancía por adquitir</h4> -->
+    <div class="alert alert-primary text-center" role="alert">
+      <i class="bi bi-list-check"></i> Mercancía por adquitir
+    </div>
+    <hr>
     <span id=""></span>
     <p>
       <table class="table table-sm table-striped table-bordered align-middle small" id="cartTable">
@@ -453,7 +462,7 @@
       <strong class="me-2">Total a pagar:</strong>$ <span id="total"></span>
     </div>    
     <div class="d-grid gap-2">
-      <button class="btn btn-primary" id="sendCart" type="button"><i class="bi bi-bag-check-fill"></i> Comprar</button>
+      <button class="btn btn-primary" id="sendCart" type="button"><i class="bi bi-bag-check-fill"></i> Realizar compra</button>
     </div>
   </div>
 </div>
