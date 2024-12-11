@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const total = totals.reduce((sum, value) => sum + value, 0);
         totalDisplay.textContent = `${total.toFixed(2)}`;
         sendCart.disabled = total === 0;
+       
     };
 
     cartBody.addEventListener("input", (e) => {
@@ -103,9 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 icon: "success",
                 showCancelButton: false,
                 confirmButtonText: "Aceptar",
-                // cancelButtonText: "Cancelar",
                 confirmButtonColor: "#3085d6" // Azul
-                // cancelButtonColor: "#d33" // Rojo
             });
         }
             // alert(data.message || "Carrito enviado con éxito")
