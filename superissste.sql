@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-12-2024 a las 07:19:28
+-- Tiempo de generación: 11-12-2024 a las 17:52:57
 -- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 7.4.29
+-- Versión de PHP: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,22 +32,31 @@ CREATE TABLE `carrito` (
   `producto_id` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `total` decimal(10,2) NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id_venta_completa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `carrito`
 --
 
-INSERT INTO `carrito` (`id`, `producto_id`, `cantidad`, `total`, `fecha`) VALUES
-(1, 1, 9, '900.00', '2024-12-06 18:11:08'),
-(2, 2, 1, '200.00', '2024-12-06 18:11:09'),
-(3, 3, 1, '150.00', '2024-12-06 18:11:09'),
-(4, 1, 9, '900.00', '2024-12-06 18:12:26'),
-(5, 2, 2, '400.00', '2024-12-06 18:12:26'),
-(6, 3, 1, '150.00', '2024-12-06 18:12:26'),
-(7, 1, 9, '900.00', '2024-12-06 18:19:35'),
-(8, 3, 1, '150.00', '2024-12-06 18:19:35');
+INSERT INTO `carrito` (`id`, `producto_id`, `cantidad`, `total`, `fecha`, `id_venta_completa`) VALUES
+(1, 1, 9, '900.00', '2024-12-06 18:11:08', 0),
+(2, 2, 1, '200.00', '2024-12-06 18:11:09', 0),
+(3, 3, 1, '150.00', '2024-12-06 18:11:09', 0),
+(4, 1, 9, '900.00', '2024-12-06 18:12:26', 0),
+(5, 2, 2, '400.00', '2024-12-06 18:12:26', 0),
+(6, 3, 1, '150.00', '2024-12-06 18:12:26', 0),
+(7, 1, 9, '900.00', '2024-12-06 18:19:35', 0),
+(8, 3, 1, '150.00', '2024-12-06 18:19:35', 0),
+(9, 1, 1, '1.00', '2024-12-10 23:55:52', 0),
+(10, 1, 2, '2.00', '2024-12-10 23:56:38', 0),
+(11, 11, 2, '2.00', '2024-12-10 23:56:38', 0),
+(12, 1, 3, '3.00', '2024-12-10 23:56:38', 0),
+(13, 3, 4, '4.00', '2024-12-10 23:56:38', 0),
+(14, 33, 3, '3.00', '2024-12-10 23:56:38', 0),
+(15, 32, 3, '3.00', '2024-12-10 23:56:38', 0),
+(16, 8, 1, '1.00', '2024-12-10 23:56:38', 0);
 
 -- --------------------------------------------------------
 
@@ -141,6 +150,21 @@ CREATE TABLE `usr` (
   `perfil` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `venta_completa`
+--
+
+CREATE TABLE `venta_completa` (
+  `id` int(11) NOT NULL,
+  `nombre_completo` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `direccion` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `telefono` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `card_last` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Índices para tablas volcadas
 --
@@ -170,6 +194,12 @@ ALTER TABLE `usr`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `venta_completa`
+--
+ALTER TABLE `venta_completa`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -177,7 +207,7 @@ ALTER TABLE `usr`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -195,6 +225,12 @@ ALTER TABLE `inventario`
 -- AUTO_INCREMENT de la tabla `usr`
 --
 ALTER TABLE `usr`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `venta_completa`
+--
+ALTER TABLE `venta_completa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
