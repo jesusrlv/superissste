@@ -118,5 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let telefono = document.getElementById("telefono");
         let correo = document.getElementById("email");
         let tarjeta = document.getElementById("tarjeta");
+
+        fetch 
+
+
     };
 });
