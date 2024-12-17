@@ -170,13 +170,16 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house"></i> Inicio</a>
+            <a class="nav-link active" aria-current="page" href="#inicio"><i class="bi bi-house"></i> Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="bi bi-info-circle-fill"></i> Información</a>
+            <a class="nav-link" href="#servicios"><i class="bi bi-info-circle-fill"></i> Servicios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" aria-disabled=""><i class="bi bi-bag-check-fill"></i> Ofertas</a>
+            <a class="nav-link" href="#ofertas" aria-disabled=""><i class="bi bi-bag-check-fill"></i> Ofertas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#catalogo" aria-disabled=""><i class="bi bi-cart3"></i></i> Catálogo</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
@@ -195,7 +198,7 @@
 </header>
 
 <main>
-
+  <span id="inicio"></span>
   <div id="myCarousel" class="carousel slide vh-100" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -213,7 +216,7 @@
           <p class="mt-3 text-secondary">
             <span class="display-6 text-black" style="background-color: rgba(255,255,255,0.4); padding: 10px 20px; border-radius: 10px;">SUCURSAL FRESNILLO</span>
           </p>
-          <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+          <p><a class="btn btn-lg btn-primary" href="#servicios"><i class="bi bi-info-circle-fill"></i> Servicios</a></p>
         </div>
       </div>
       <!-- Slide 2 -->
@@ -226,7 +229,7 @@
           <p class="mt-3 text-secondary">
             <span class="display-6 text-black" style="background-color: rgba(255,255,255,0.4); padding: 10px 20px; border-radius: 10px;">SUCURSAL FRESNILLO</span>
           </p>
-          <p><a class="btn btn-lg btn-primary" href="#"><i class="bi bi-geo-alt"></i> Ubicación</a></p>
+          <p><a class="btn btn-lg btn-primary" href="#ubicacion"><i class="bi bi-geo-alt"></i> Ubicación</a></p>
         </div>
       </div>
       <!-- Slide 3 -->
@@ -239,7 +242,7 @@
           <p class="mt-3 text-secondary">
             <span class="display-6 text-black" style="background-color: rgba(255,255,255,0.4); padding: 10px 20px; border-radius: 10px;">SUCURSAL FRESNILLO</span>
           </p>
-          <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+          <p><a class="btn btn-lg btn-primary" href="#catalogo"><i class="bi bi-cart3"></i> Catálogo</a></p>
         </div>
       </div>
     </div>
@@ -258,7 +261,7 @@
   <!-- Marketing messaging and featurettes
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
-
+  <span id="servicios"></span>
   <div class="container marketing">
     <p class="text-center">
       <h2 class="featurette-heading fw-normal lh-1 text-center mb-5">Nuestros servicios <span class="text-body-secondary">SUPERISSSTE</span></h2>
@@ -305,7 +308,7 @@
 
 
     <!-- START THE FEATURETTES -->
-
+    <span id="ubicacion"></span>
     <hr class="featurette-divider mt-4">
 
     <div class="row featurette">
@@ -337,7 +340,7 @@
     </div>
 
     <hr class="featurette-divider mt-3">
-
+    <span id="catalogo"></span>
     <div class="row featurette container-card3">
       <div class="col-md-12 d-flex flex-column justify-content-center" style="height: 25vh;">
         <h2 class="featurette-heading fw-normal lh-1 text-center">Catálogo <span class="text-body-secondary">SUPERISSSTE</span></h2>
@@ -393,7 +396,7 @@
 
   <!-- FOOTER -->
   <footer class="container">
-    <p class="float-end"><a href="#"><i class="bi bi-chevron-bar-up"></i> Arriba</a></p>
+    <p class="float-end"><a href="#inicio"><i class="bi bi-chevron-bar-up"></i> Arriba</a></p>
     <p>&copy; 2024 SUPERISSSTE &middot; <a href="#">Privacidad</a> &middot; <a href="#">Términos y condiciones</a></p>
   </footer>
 </main>
@@ -470,3 +473,15 @@
 </html>
 
 <script src="js/carrito.js"></script>
+
+<script>
+  $("a[href^='#']").click(function(e) {
+      e.preventDefault();
+      
+      var position = $($(this).attr("href")).offset().top;
+  
+      $("body, html").animate({
+          scrollTop: position
+      } /* speed */ );
+  });
+</script>
