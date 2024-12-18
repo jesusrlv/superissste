@@ -84,11 +84,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    sendCart.addEventListener("click", () => {
+    // sendCart.addEventListener("click", () => {
+    const agregarProductos = (id) => {
+        console.log("Identificador recibido:", id); // Verificar si llega correctamente
         const cartData = [...cartBody.querySelectorAll("tr")].map(row => ({
             productId: row.dataset.productId,
             quantity: row.querySelector(".quantity").value,
-            total: row.querySelector(".total").textContent
+            total: row.querySelector(".total").textContent,
+            identificador: id
         }));
 
         fetch("prcd/save_cart.php", {
@@ -110,17 +113,55 @@ document.addEventListener("DOMContentLoaded", () => {
             // alert(data.message || "Carrito enviado con éxito")
         )
         .catch(error => console.error("Error:", error));
+    // });
+    }
+    sendCart.addEventListener("click", () => {
+    // const datosGenerales = () => {
+        // Obtener los valores de los campos
+        let nombre = document.getElementById("nombre").value;
+        let direccion = document.getElementById("direccion").value;
+        let telefono = document.getElementById("telefono").value;
+        let correo = document.getElementById("email").value;
+        let tarjeta = document.getElementById("tarjeta").value;
+    
+        // Crear un objeto con los datos
+        const datos = {
+            nombre: nombre,
+            direccion: direccion,
+            telefono: telefono,
+            correo: correo,
+            tarjeta: tarjeta
+        };
+    
+        // Realizar el fetch con los datos
+        fetch("prcd/save_cart2.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(datos)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error en la respuesta del servidor");
+            }
+            return response.json(); // Convertir la respuesta a JSON
+        })
+        .then(data => {
+            // Manejar el mensaje de éxito
+            if (data.success) {
+                let id = data.identificador;
+                agregarProductos(id);
+                
+                console.log("Datos registrados");
+            } else {
+               
+                console.log("Error al procesar solicitud");
+            }
+        })
+        .catch(error => {
+            // Manejar errores de red o del servidor
+            console.error("Error:", error);
+            
+        });
+    // };
     });
-
-    const datosGenerales = () => {
-        let nombre = document.getElementById("nombre");
-        let direccion = document.getElementById("direccion");
-        let telefono = document.getElementById("telefono");
-        let correo = document.getElementById("email");
-        let tarjeta = document.getElementById("tarjeta");
-
-        fetch 
-
-
-    };
 });
