@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-12-2024 a las 17:52:57
+-- Tiempo de generación: 18-12-2024 a las 06:50:22
 -- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 7.4.28
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `carrito` (
   `cantidad` int(11) NOT NULL,
   `total` decimal(10,2) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
-  `id_venta_completa` int(11) NOT NULL
+  `id_venta_completa` varchar(25) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -41,22 +41,12 @@ CREATE TABLE `carrito` (
 --
 
 INSERT INTO `carrito` (`id`, `producto_id`, `cantidad`, `total`, `fecha`, `id_venta_completa`) VALUES
-(1, 1, 9, '900.00', '2024-12-06 18:11:08', 0),
-(2, 2, 1, '200.00', '2024-12-06 18:11:09', 0),
-(3, 3, 1, '150.00', '2024-12-06 18:11:09', 0),
-(4, 1, 9, '900.00', '2024-12-06 18:12:26', 0),
-(5, 2, 2, '400.00', '2024-12-06 18:12:26', 0),
-(6, 3, 1, '150.00', '2024-12-06 18:12:26', 0),
-(7, 1, 9, '900.00', '2024-12-06 18:19:35', 0),
-(8, 3, 1, '150.00', '2024-12-06 18:19:35', 0),
-(9, 1, 1, '1.00', '2024-12-10 23:55:52', 0),
-(10, 1, 2, '2.00', '2024-12-10 23:56:38', 0),
-(11, 11, 2, '2.00', '2024-12-10 23:56:38', 0),
-(12, 1, 3, '3.00', '2024-12-10 23:56:38', 0),
-(13, 3, 4, '4.00', '2024-12-10 23:56:38', 0),
-(14, 33, 3, '3.00', '2024-12-10 23:56:38', 0),
-(15, 32, 3, '3.00', '2024-12-10 23:56:38', 0),
-(16, 8, 1, '1.00', '2024-12-10 23:56:38', 0);
+(17, 24, 2, '2.00', '2024-12-18 05:44:15', '2024121806441559522A44'),
+(18, 12, 1, '1.00', '2024-12-18 05:44:15', '2024121806441559522A44'),
+(19, 16, 3, '3.00', '2024-12-18 05:46:49', '2024121806464963BE510D'),
+(20, 32, 4, '4.00', '2024-12-18 05:46:49', '2024121806464963BE510D'),
+(21, 10, 5, '5.00', '2024-12-18 05:46:49', '2024121806464963BE510D'),
+(22, 6, 7, '7.00', '2024-12-18 05:46:49', '2024121806464963BE510D');
 
 -- --------------------------------------------------------
 
@@ -162,8 +152,26 @@ CREATE TABLE `venta_completa` (
   `direccion` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `telefono` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `card_last` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+  `card_last` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `identificador` varchar(25) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `venta_completa`
+--
+
+INSERT INTO `venta_completa` (`id`, `nombre_completo`, `direccion`, `telefono`, `email`, `card_last`, `identificador`) VALUES
+(2, 'z', 'x', '11222', 'dasdasd@dadfd.net', '11223456', '202412180618148C85CAD2'),
+(3, 'z', 'x', '11222', 'dasdasd@dadfd.net', '11223456', '20241218062236DEB677EF'),
+(4, 'z', 'x', '11222', 'dasdasd@dadfd.net', '11223456', '202412180625366F46B839'),
+(5, 'z', 'x', '11222', 'dasdasd@dadfd.net', '11223456', '2024121806264925B24C71'),
+(6, 'z', 'x', '11222', 'dasdasd@dadfd.net', '11223456', '202412180631493C8B0E92'),
+(7, 'z', 'x', '11222', 'dasdasd@dadfd.net', '11223456', '2024121806364087885759'),
+(8, 'xxs', 'ssss', '223333', '2233ddsd@vdfd.com', '827839', '20241218064127685F1374'),
+(9, 'xxs', 'ssss', '223333', '2233ddsd@vdfd.com', '827839', '20241218064248C858A85B'),
+(10, 'xxs', 'ssss', '223333', '2233ddsd@vdfd.com', '827839', '20241218064353FD457428'),
+(11, 'xxs', 'ssss', '223333', '2233ddsd@vdfd.com', '827839', '2024121806441559522A44'),
+(12, 'Jesús Rodolfo Leaños Villegas', 'Calle camino del pinar 111', '4915000', 'jesusrlv@gmail.com', '98762343', '2024121806464963BE510D');
 
 --
 -- Índices para tablas volcadas
@@ -207,7 +215,7 @@ ALTER TABLE `venta_completa`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -231,7 +239,7 @@ ALTER TABLE `usr`
 -- AUTO_INCREMENT de la tabla `venta_completa`
 --
 ALTER TABLE `venta_completa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
