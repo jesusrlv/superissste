@@ -135,7 +135,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let telefono = document.getElementById("telefono").value;
         let correo = document.getElementById("email").value;
         let tarjeta = document.getElementById("tarjeta").value;
-    
+        $('#carrito').offcanvas('hide');
+        
         // Crear un objeto con los datos
         const datos = {
             nombre: nombre,
