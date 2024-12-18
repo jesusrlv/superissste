@@ -108,7 +108,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 showCancelButton: false,
                 confirmButtonText: "Aceptar",
                 confirmButtonColor: "#3085d6" // Azul
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Acciones a realizar después de que el usuario confirme
+                    document.getElementById("nombre").value = "";
+                    document.getElementById("direccion").value = "";
+                    document.getElementById("telefono").value = "";
+                    document.getElementById("email").value = "";
+                    document.getElementById("tarjeta").value = "";
+                    document.getElementById("cartBody").innerHTML = "";
+                }
             });
+            
         }
             // alert(data.message || "Carrito enviado con éxito")
         )
