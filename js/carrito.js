@@ -117,6 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     document.getElementById("email").value = "";
                     document.getElementById("tarjeta").value = "";
                     document.getElementById("cartBody").innerHTML = "";
+                    filasTotales(0);
                 }
             });
             
