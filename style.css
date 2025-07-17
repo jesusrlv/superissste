@@ -8,6 +8,24 @@
 
 }
 
+
+/* Efectos hover */
+/* Efecto hover */
+.cardImg:hover .hover-overlay {
+    opacity: 1 !important; /* Muestra el overlay oscuro */
+}
+
+.cardImg:hover .hover-btn {
+    opacity: 1 !important; /* Muestra el botón central */
+}
+
+
+/* Asegura que la imagen ocupe todo el espacio */
+.cardImg {
+    width: 100%;
+    transition: filter 0.3s;
+}
+
 /* card code */
 .container-card2 {
     display: flex;
