@@ -1,9 +1,4 @@
-body{
-  background-image: url(img/background3.jpg);
-  background-repeat: repeat-y;
-  background-size: 100%;
-  
-}
+
 #fotosTienda{
     width: 100%; /* La imagen ocupa el ancho completo del div */
     height: 100%; /* La imagen ocupa el alto completo del div */
@@ -35,6 +30,18 @@ body{
     gap: 20px;
     max-width: 1200px;
     width: 100%;
+  }
+
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: box-shadow 0.3s ease; /* Efecto al pasar el mouse */
+
+    border: none !important; /* Elimina cualquier borde */
+    outline: none !important; /* Elimina outlines (en caso de focos) */
+  }
+
+  .card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al hover */
   }
 
   .card2 {

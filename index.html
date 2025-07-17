@@ -161,14 +161,15 @@
 
     
 <header data-bs-theme="dark">
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #2d2a24;">
     <div class="container-fluid">
       <a class="navbar-brand" href="#"><img src="img/superissste_logo.png" alt="" width="120"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <!-- Menú centrado: mx-auto en el ul -->
+        <ul class="navbar-nav mx-auto mb-2 mb-md-0">  <!-- Quitamos me-auto y agregamos mx-auto -->
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#inicio"><i class="bi bi-house"></i> Inicio</a>
           </li>
@@ -176,14 +177,14 @@
             <a class="nav-link" href="#servicios"><i class="bi bi-info-circle-fill"></i> Servicios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#ofertas" aria-disabled=""><i class="bi bi-bag-check-fill"></i> Ofertas</a>
+            <a class="nav-link" href="#ofertas"><i class="bi bi-bag-check-fill"></i> Ofertas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#catalogo" aria-disabled=""><i class="bi bi-cart3"></i></i> Catálogo</a>
+            <a class="nav-link" href="#catalogo"><i class="bi bi-cart3"></i> Catálogo</a>
           </li>
         </ul>
+        <!-- Botón del carrito (se mantiene a la derecha) -->
         <form class="d-flex" role="search">
-          
           <button type="button" class="btn btn-outline-primary position-relative" onclick="carrito()">
             <i class="bi bi-cart-check"></i> Carrito
             <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger" id="sumaCarrito">
