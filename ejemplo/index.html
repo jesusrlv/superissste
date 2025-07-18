@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanStyle - Moda Urbana con Estilo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .cart-item-enter {
+            animation: slideIn 0.3s forwards;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-tshirt text-3xl"></i>
+                    <h1 class="text-2xl font-bold">UrbanStyle</h1>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <nav class="hidden md:flex space-x-6">
+                        <a href="#inicio" class="hover:text-indigo-200 transition">Inicio</a>
+                        <a href="#productos" class="hover:text-indigo-200 transition">Productos</a>
+                        <a href="#ofertas" class="hover:text-indigo-200 transition">Ofertas</a>
+                        <a href="#contacto" class="hover:text-indigo-200 transition">Contacto</a>
+                    </nav>
+                    <button id="cart-toggle" class="relative">
+                        <i class="fas fa-shopping-cart text-2xl"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-yellow-400 text-black rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">0</span>
+                    </button>
+                    <button class="md:hidden" id="menu-toggle">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-indigo-700 text-white py-4 px-4 md:hidden">
+        <div class="flex flex-col space-y-3">
+            <a href="#inicio" class="block py-2 hover:bg-indigo-600 px-3 rounded">Inicio</a>
+            <a href="#productos" class="block py-2 hover:bg-indigo-600 px-3 rounded">Productos</a>
+            <a href="#ofertas" class="block py-2 hover:bg-indigo-600 px-3 rounded">Ofertas</a>
+            <a href="#contacto" class="block py-2 hover:bg-indigo-600 px-3 rounded">Contacto</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Moda Urbana con Estilo</h2>
+                <p class="text-xl mb-6">Descubre nuestra colección exclusiva de ropa y accesorios diseñados para destacar en la ciudad.</p>
+                <div class="flex space-x-4">
+                    <a href="#productos" class="bg-white text-indigo-600 hover:bg-gray-100 px-6 py-3 rounded-full font-bold transition duration-300 shadow-lg pulse">Ver Colección</a>
+                    <a href="#ofertas" class="bg-transparent border-2 border-white hover:bg-white hover:text-indigo-600 px-6 py-3 rounded-full font-bold transition duration-300">Ofertas Especiales</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Modelo con ropa urbana" class="rounded-lg shadow-2xl max-w-full h-auto md:max-w-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="bg-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-lg bg-gray-50 hover:bg-white hover:shadow-lg transition">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-truck text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Envío Rápido</h3>
+                    <p class="text-gray-600">Recibe tus productos en 24-48 horas con nuestro servicio express.</p>
+                </div>
+                <div class="text-center p-6 rounded-lg bg-gray-50 hover:bg-white hover:shadow-lg transition">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-exchange-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Devoluciones Fáciles</h3>
+                    <p class="text-gray-600">30 días para devolver cualquier producto que no te guste.</p>
+                </div>
+                <div class="text-center p-6 rounded-lg bg-gray-50 hover:bg-white hover:shadow-lg transition">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-shield-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Pago Seguro</h3>
+                    <p class="text-gray-600">Protegemos tus datos con los más altos estándares de seguridad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Nuestros Productos Destacados</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Descubre nuestra selección de prendas y accesorios cuidadosamente elegidos para tu estilo urbano.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Camiseta básica" class="w-full h-64 object-cover">
+                        <div class="absolute top-2 right-2 bg-yellow-400 text-black px-2 py-1 rounded-full text-xs font-bold">NUEVO</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Camiseta Oversized</h3>
+                        <p class="text-gray-600 text-sm mb-3">Comodidad y estilo en una prenda esencial.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">$29.99</span>
+                            <button class="add-to-cart bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded-full text-sm transition" data-id="1" data-name="Camiseta Oversized" data-price="29.99" data-image="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80">
+                                Añadir al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80" alt="Pantalón cargo" class="w-full h-64 object-cover">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">-20%</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Pantalón Cargo</h3>
+                        <p class="text-gray-600 text-sm mb-3">Funcionalidad y moda en un solo diseño.</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-400 line-through mr-2">$59.99</span>
+                                <span class="font-bold text-indigo-600">$47.99</span>
+                            </div>
+                            <button class="add-to-cart bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded-full text-sm transition" data-id="2" data-name="Pantalón Cargo" data-price="47.99" data-image="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80">
+                                Añadir al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Zapatillas urbanas" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Zapatillas Urbanas</h3>
+                        <p class="text-gray-600 text-sm mb-3">Estilo y comodidad para tus caminatas diarias.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">$79.99</span>
+                            <button class="add-to-cart bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded-full text-sm transition" data-id="3" data-name="Zapatillas Urbanas" data-price="79.99" data-image="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80">
+                                Añadir al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Gorra plana" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Gorra Plana</h3>
+                        <p class="text-gray-600 text-sm mb-3">Complemento esencial para tu look urbano.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">$24.99</span>
+                            <button class="add-to-cart bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded-full text-sm transition" data-id="4" data-name="Gorra Plana" data-price="24.99" data-image="https://images.unsplash.com/photo-1539533018447-63fcce2678e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80">
+                                Añadir al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white px-6 py-2 rounded-full font-bold transition duration-300">Ver Todos los Productos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section id="ofertas" class="py-16 bg-indigo-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Ofertas Especiales</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Aprovecha nuestras promociones por tiempo limitado.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl overflow-hidden shadow-xl text-white">
+                    <div class="p-8 md:p-10 flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 mb-6 md:mb-0">
+                            <h3 class="text-2xl font-bold mb-3">Pack Urbano Completo</h3>
+                            <p class="mb-4">Lleva 3 productos y paga solo 2. Ahorra hasta $50 en tu compra.</p>
+                            <a href="#" class="inline-block bg-white text-indigo-600 hover:bg-gray-100 px-5 py-2 rounded-full font-bold transition duration-300">Ver Oferta</a>
+                        </div>
+                        <div class="md:w-1/2 flex justify-center">
+                            <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Pack urbano" class="rounded-lg max-w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl overflow-hidden shadow-xl text-white">
+                    <div class="p-8 md:p-10 flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 mb-6 md:mb-0">
+                            <h3 class="text-2xl font-bold mb-3">Envío Gratis</h3>
+                            <p class="mb-4">En compras superiores a $100. Aplica para todo el país.</p>
+                            <a href="#" class="inline-block bg-white text-orange-500 hover:bg-gray-100 px-5 py-2 rounded-full font-bold transition duration-300">Ver Condiciones</a>
+                        </div>
+                        <div class="md:w-1/2 flex justify-center">
+                            <img src="https://images.unsplash.com/photo-1607083206869-4c767bc2e72d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Envío gratis" class="rounded-lg max-w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Lo que dicen nuestros clientes</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Experiencias reales de personas que aman nuestros productos.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"La calidad de las camisetas superó mis expectativas. Muy cómodas y con un diseño moderno."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold">María González</h4>
+                            <p class="text-gray-500 text-sm">Cliente desde 2022</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"El envío llegó antes de lo esperado y el pantalón cargo es perfecto para mi estilo de vida activo."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold">Carlos Martínez</h4>
+                            <p class="text-gray-500 text-sm">Cliente desde 2021</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Excelente atención al cliente. Tuve un problema con mi pedido y lo resolvieron inmediatamente."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold">Laura Fernández</h4>
+                            <p class="text-gray-500 text-sm">Cliente desde 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Únete a nuestra comunidad</h2>
+            <p class="max-w-2xl mx-auto mb-8">Suscríbete a nuestro newsletter y recibe un 10% de descuento en tu primera compra.</p>
+            
+            <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+                <input type="email" placeholder="Tu correo electrónico" class="flex-grow px-4 py-3 rounded-full text-gray-800 focus:outline-none">
+                <button type="submit" class="bg-white text-indigo-600 hover:bg-gray-100 px-6 py-3 rounded-full font-bold transition duration-300">Suscribirme</button>
+            </form>
+            
+            <p class="mt-4 text-sm text-indigo-100">Prometemos no enviarte spam. Puedes darte de baja en cualquier momento.</p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contacto" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Contáctanos</h2>
+                    <p class="text-gray-600 mb-6">¿Tienes alguna pregunta o comentario? Estamos aquí para ayudarte.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="text-indigo-600 mr-4 mt-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Dirección</h4>
+                                <p class="text-gray-600">Calle Moda 123, Distrito Urbano, Ciudad</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-indigo-600 mr-4 mt-1">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Teléfono</h4>
+                                <p class="text-gray-600">+1 234 567 890</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-indigo-600 mr-4 mt-1">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Email</h4>
+                                <p class="text-gray-600">hola@urbanstyle.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold text-gray-800 mb-4">Síguenos</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-gray-100 hover:bg-indigo-100 text-indigo-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 hover:bg-indigo-100 text-indigo-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 hover:bg-indigo-100 text-indigo-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 hover:bg-indigo-100 text-indigo-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="bg-gray-50 p-6 rounded-lg">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Nombre</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Mensaje</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-full font-bold transition duration-300">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-tshirt text-2xl"></i>
+                        <h3 class="text-xl font-bold">UrbanStyle</h3>
+                    </div>
+                    <p class="text-gray-400">Moda urbana con estilo y calidad para el día a día.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Comprar</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Hombres</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Mujeres</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Accesorios</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Ofertas</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Ayuda</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Preguntas frecuentes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Envíos y devoluciones</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Tallas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Términos y condiciones</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Política de privacidad</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Política de cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 UrbanStyle. Todos los derechos reservados.</p>
+                <div class="flex space-x-6">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/2560px-MasterCard_Logo.svg.png" alt="Mastercard" class="h-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" class="h-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2560px-PayPal.svg.png" alt="Paypal" class="h-8">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 w-full md:w-96 h-full bg-white shadow-xl transform translate-x-full transition-transform duration-300 z-50 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Tu Carrito</h2>
+                <button id="cart-close" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="cart-items" class="space-y-4">
+                <!-- Cart items will be added here dynamically -->
+                <div class="text-center py-8 text-gray-500" id="empty-cart-message">
+                    <i class="fas fa-shopping-cart text-4xl mb-4 text-gray-300"></i>
+                    <p>Tu carrito está vacío</p>
+                </div>
+            </div>
+            
+            <div id="cart-summary" class="border-t border-gray-200 pt-4 mt-6 hidden">
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Subtotal</span>
+                    <span id="cart-subtotal" class="font-bold">$0.00</span>
+                </div>
+                <div class="flex justify-between mb-4">
+                    <span class="text-gray-600">Envío</span>
+                    <span class="font-bold">Gratis</span>
+                </div>
+                <div class="flex justify-between text-lg font-bold mb-6">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                
+                <a href="#" class="block bg-indigo-600 hover:bg-indigo-700 text-white text-center py-3 rounded-lg font-bold transition duration-300 mb-3">
+                    Proceder al pago
+                </a>
+                <a href="#" class="block border border-indigo-600 text-indigo-600 hover:bg-indigo-50 text-center py-3 rounded-lg font-bold transition duration-300">
+                    Seguir comprando
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Cart functionality
+        const cartToggle = document.getElementById('cart-toggle');
+        const cartClose = document.getElementById('cart-close');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const cartCount = document.getElementById('cart-count');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const cartSummary = document.getElementById('cart-summary');
+        const cartSubtotal = document.getElementById('cart-subtotal');
+        const cartTotal = document.getElementById('cart-total');
+        
+        let cart = [];
+        
+        // Toggle cart sidebar
+        cartToggle.addEventListener('click', () => {
+            cartSidebar.classList.remove('translate-x-full');
+            cartOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        cartClose.addEventListener('click', () => {
+            cartSidebar.classList.add('translate-x-full');
+            cartOverlay.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        cartOverlay.addEventListener('click', () => {
+            cartSidebar.classList.add('translate-x-full');
+            cartOverlay.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const product = {
+                    id: button.dataset.id,
+                    name: button.dataset.name,
+                    price: parseFloat(button.dataset.price),
+                    image: button.dataset.image,
+                    quantity: 1
+                };
+                
+                // Check if product already in cart
+                const existingItem = cart.find(item => item.id === product.id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push(product);
+                }
+                
+                updateCart();
+                
+                // Show cart sidebar when adding first item
+                if (cart.length === 1) {
+                    cartSidebar.classList.remove('translate-x-full');
+                    cartOverlay.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
+                
+                // Animation feedback
+                button.innerHTML = '<i class="fas fa-check mr-1"></i> Añadido';
+                button.classList.remove('bg-indigo-600');
+                button.classList.add('bg-green-500');
+                
+                setTimeout(() => {
+                    button.innerHTML = 'Añadir al carrito';
+                    button.classList.remove('bg-green-500');
+                    button.classList.add('bg-indigo-600');
+                }, 2000);
+            });
+        });
+        
+        // Update cart UI
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update cart items
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                emptyCartMessage.classList.remove('hidden');
+                cartSummary.classList.add('hidden');
+            } else {
+                emptyCartMessage.classList.add('hidden');
+                cartSummary.classList.remove('hidden');
+                
+                let subtotal = 0;
+                
+                cart.forEach(item => {
+                    subtotal += item.price * item.quantity;
+                    
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'flex border-b border-gray-200 pb-4 cart-item-enter';
+                    cartItem.innerHTML = `
+                        <div class="w-20 h-20 bg-gray-100 rounded-lg overflow-hidden mr-4 flex-shrink-0">
+                            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="font-bold">${item.name}</h3>
+                            <p class="text-gray-600">$${item.price.toFixed(2)}</p>
+                            <div class="flex items-center mt-2">
+                                <button class="quantity-btn decrease bg-gray-200 hover:bg-gray-300 w-6 h-6 rounded flex items-center justify-center" data-id="${item.id}">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <span class="quantity mx-3">${item.quantity}</span>
+                                <button class="quantity-btn increase bg-gray-200 hover:bg-gray-300 w-6 h-6 rounded flex items-center justify-center" data-id="${item.id}">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="ml-4 flex flex-col items-end">
+                            <span class="font-bold">$${(item.price * item.quantity).toFixed(2)}</span>
+                            <button class="remove-item text-gray-400 hover:text-red-500 mt-2" data-id="${item.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    
+                    cartItemsContainer.appendChild(cartItem);
+                });
+                
+                // Update totals
+                cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+                cartTotal.textContent = `$${subtotal.toFixed(2)}`;
+                
+                // Add event listeners to quantity buttons
+                document.querySelectorAll('.quantity-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const id = button.dataset.id;
+                        const item = cart.find(item => item.id === id);
+                        
+                        if (button.classList.contains('increase')) {
+                            item.quantity += 1;
+                        } else if (button.classList.contains('decrease') && item.quantity > 1) {
+                            item.quantity -= 1;
+                        }
+                        
+                        updateCart();
+                    });
+                });
+                
+                // Add event listeners to remove buttons
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const id = button.dataset.id;
+                        cart = cart.filter(item => item.id !== id);
+                        updateCart();
+                    });
+                });
+            }
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
